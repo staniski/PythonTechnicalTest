@@ -90,15 +90,10 @@ curl --header "Authorization: Token <USER TOKEN>" --request GET http://127.0.0.1
 >>>[]
 
 curl --header "Authorization: Token <USER TOKEN>" -H  "Content-Type: application/json" --request POST --data '{"isin": "FR0000131104","size": 1000000,"currency": "USD",
-<<<<<<< HEAD
 "maturity": "2025-09-25","lei": "R0MUWSFPU8MPRO8K5P83"}' http://127.0.0.1:8000/bonds/
-~~~
-`>>>{"isin":"FR0000131104","size":1000000,"currency":"USD","maturity":"2025-09-25","lei":"R0MUWSFPU8MPRO8K5P83","legal_name":"BNPPARIBAS","owner":"user"}`
-=======
-"maturity": "2025-09-25","lei": "R0MUWSFPU8MPRO8K5P83","legal_name": "X"}' http://127.0.0.1:8000/bonds/
->>>>>>> 047fee9a71885c7cef96ea9d3180606197eff364
 
 >>>{"isin":"FR0000131104","size":1000000,"currency":"USD","maturity":"2025-09-25","lei":"R0MUWSFPU8MPRO8K5P83","legal_name":"BNPPARIBAS","owner":"user"}
 
 ~~~
+
 
