@@ -55,3 +55,44 @@ We would also like to be able to add a filter such as:
 `GET /bonds/?legal_name=BNPPARIBAS`
 
 to reduce down the results.
+
+
+#### Implementation
+
+Creation and get methods for users and bonds are written using generic clas-based views.
+Token Authentication is enabled. Each user gets a token after creation of a user instance.
+-To register send request to:
+    `POST /register/`
+with username and password as data.
+
+-To filter throw individual legal_name do a GET request to /bonds/?legal_name=<quary>
+-To add a bond:
+    `POST /bonds/`
+
+with data like this:
+~~~
+{
+    "isin": "FR0000131104",
+    "size": 100000000,
+    "currency": "EUR",
+    "maturity": "2025-02-28",
+    "lei": "R0MUWSFPU8MPRO8K5P83",
+    "legal_name: "anything"
+
+}
+~~~
+"legal_name" will be fetched with GLEIF API and replaced if provided lei is correct, otherwise it will return legal_name:"Unknown".
+
+-To connect:
+`curl --header "Content-Type: application/json" --request POST --data '{"username": "user", "password": "password"}' http://127.0.0.1:8000/api-token-auth/`
+`>>>{"token":"<>USER TOKEN"}`
+`curl --header "Authorization: Token <USER TOKEN>" --request GET http://127.0.0.1:8000/bonds/`
+`>>>[]`
+~~~
+curl --header "Authorization: Token <USER TOKEN>" -H  "Content-Type: application/json" --request POST --data '{"isin": "FR0000131104","size": 1000000,"currency": "USD",
+"maturity": "2025-09-25","lei": "R0MUWSFPU8MPRO8K5P83","legal_name": "X"}' http://127.0.0.1:8000/bonds/
+~~~
+`>>>{"isin":"FR0000131104","size":1000000,"currency":"USD","maturity":"2025-09-25","lei":"R0MUWSFPU8MPRO8K5P83","legal_name":"BNPPARIBAS","owner":"user"}`
+
+
+
