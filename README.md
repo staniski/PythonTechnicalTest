@@ -84,15 +84,16 @@ with data like this:
 "legal_name" will be fetched with GLEIF API and replaced if provided lei is correct, otherwise it will return legal_name:"Unknown".
 
 -To connect:
-`curl --header "Content-Type: application/json" --request POST --data '{"username": "user", "password": "password"}' http://127.0.0.1:8000/api-token-auth/`
-`>>>{"token":"<>USER TOKEN"}`
-`curl --header "Authorization: Token <USER TOKEN>" --request GET http://127.0.0.1:8000/bonds/`
-`>>>[]`
 ~~~
+curl --header "Content-Type: application/json" --request POST --data '{"username": "user", "password": "password"}' http://127.0.0.1:8000/api-token-auth/
+>>>{"token":"<>USER TOKEN"}
+curl --header "Authorization: Token <USER TOKEN>" --request GET http://127.0.0.1:8000/bonds/
+>>>[]
+
 curl --header "Authorization: Token <USER TOKEN>" -H  "Content-Type: application/json" --request POST --data '{"isin": "FR0000131104","size": 1000000,"currency": "USD",
 "maturity": "2025-09-25","lei": "R0MUWSFPU8MPRO8K5P83","legal_name": "X"}' http://127.0.0.1:8000/bonds/
+
+>>>{"isin":"FR0000131104","size":1000000,"currency":"USD","maturity":"2025-09-25","lei":"R0MUWSFPU8MPRO8K5P83","legal_name":"BNPPARIBAS","owner":"user"}
+
 ~~~
-`>>>{"isin":"FR0000131104","size":1000000,"currency":"USD","maturity":"2025-09-25","lei":"R0MUWSFPU8MPRO8K5P83","legal_name":"BNPPARIBAS","owner":"user"}`
-
-
 
