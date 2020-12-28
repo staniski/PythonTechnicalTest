@@ -31,7 +31,7 @@ class BondViewTestCase(APITestCase):
                 "currency": "USD", 
                 "maturity": "2025-09-25", 
                 "lei": "R0MUWSFPU8MPRO8K5P83", 
-                "legal_name": "X"}
+                }
         
         res = self.client.post('/bonds/', data, format='json')
         self.assertEqual(res.status_code, status.HTTP_201_CREATED)
@@ -43,7 +43,7 @@ class BondViewTestCase(APITestCase):
                 "currency": "USD", 
                 "maturity": "2025-09-25", 
                 "lei": "R0MUWSFPU8MPRO8K5P84", 
-                "legal_name": "X"}
+                "legal_name": ""}
         
         res = self.client.post('/bonds/', data, format='json')
         self.assertEqual(res.status_code, status.HTTP_201_CREATED)

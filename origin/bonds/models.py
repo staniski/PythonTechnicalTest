@@ -16,7 +16,7 @@ class Bond(models.Model):
     currency = models.CharField(max_length=10)
     maturity = models.DateField()
     lei = models.CharField(max_length=20)
-    legal_name = models.CharField(max_length=100)
+    legal_name = models.CharField(max_length=100, blank=True)
     owner = models.ForeignKey('auth.User', related_name='bonds', on_delete=models.CASCADE)
 
     def save(self, *args, **kwargs):
